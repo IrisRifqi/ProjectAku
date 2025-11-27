@@ -1,44 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React, { useState, Component } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
-import {
-  SafeAreaProvider,
-  useSafeAreaInsets,
-} from 'react-native-safe-area-context';
+class App extends Component {
+  state = {
+    count: 0,
+  };
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+  onPress = () => {
+    this.setState({
+      count: this.state.count + 1,
+    });
+  };
 
-  return (
-    <SafeAreaProvider>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <AppContent />
-    </SafeAreaProvider>
-  );
+  render() {
+    return (
+      <View style={style.container}>
+        <TouchableOpacity style={style.button} onPress={this.onPress}>
+          <Text>Click Me </Text>
+        </TouchableOpacity>
+        <Text>Your count = {this.state.count} times</Text>
+      </View>
+    );
+  }
 }
 
-function AppContent() {
-  const safeAreaInsets = useSafeAreaInsets();
-
-  return (
-    <View style={styles.container}>
-      <NewAppScreen
-        templateFileName="App.tsx"
-        safeAreaInsets={safeAreaInsets}
-      />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
   container: {
     flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    marginBottom: 10,
   },
 });
 
