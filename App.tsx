@@ -1,42 +1,49 @@
 import React, { useState, Component } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import type { PropsWithChildren } from 'react';
 
-class App extends Component {
-  state = {
-    count: 0,
-  };
+const FlexDirectionBasics =() => {
+  const [flexDirection, setflexDirection] =   useState('column');
 
-  onPress = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
-  };
+return(
+  <PreviewLayout
+  label="flexDirection"
+  values={['column', 'row', 'column-reverse', 'row-reverse']}
+  selectedValue={flexDirection}
+  setSelectedView={setflexDirection}>
+    <View style={[styles.powderBlue]} />
+    <View style={[styles.skyBlue]} />
+    <View style={[styles.blue]} />
+  </PreviewLayout>
+  
+);
+};
 
-  render() {
-    return (
-      <View style={style.container}>
-        <TouchableOpacity style={style.button} onPress={this.onPress}>
-          <Text>Click Me </Text>
-        </TouchableOpacity>
-        <Text>Your count = {this.state.count} times</Text>
-      </View>
-    );
-  }
-}
+const App = () => {
+  return (
+    <View>
+    
+    </View>
+  );
+};
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    marginTop: 50,
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: 20,
   },
-  button: {
+  powderBlue: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
-    marginBottom: 10,
+    backgroundColor: 'powderblue',
+  },
+  skyBlue: {
+    flex: 1,
+    backgroundColor: 'skyblue',
+  },
+  blue: {
+    flex: 1,
+    backgroundColor: 'blue',
   },
 });
 
